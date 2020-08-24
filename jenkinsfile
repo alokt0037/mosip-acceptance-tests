@@ -27,14 +27,14 @@ stage ('---------- mvn-clean-test ---------------') {
    allowMissing: false, 
    alwaysLinkToLastBuild: false, 
    keepAll: true, 
-   reportDir: branch+"/"+projectToBuild+"/testng-report", 
-   reportFiles: 'emailable-report', 
+   reportDir: branch+"/"+projectToBuild+"/testRun/reports" ,
+   reportFiles: 'mosip_reports', 
    reportName: 'HTML Report'
 ])
 }
         recipients = "alok.tiwari@technoforte.co.in"
 emailext ( 
-	    attachmentsPattern:'**/testng-report/emailable-report.html',
+	    attachmentsPattern:'**/testRun/reports/mosip_reports.html',
 	    subject: "MOSIP Jenkins Job $JOB_NAME with build no $BUILD_NUMBER",
 	    body: """<p>Check console output at <a href="$BUILD_URL">'${JOB_NAME}'</a></p>""",
 	    to: "$recipients",
