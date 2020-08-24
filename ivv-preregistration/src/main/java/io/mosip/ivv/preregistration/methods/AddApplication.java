@@ -28,7 +28,8 @@ public class AddApplication extends BaseStep implements StepInterface {
         process(responseData);
     }
 
-    public RequestDataDTO prepare(){
+    @SuppressWarnings({ "unchecked", "serial" })
+	public RequestDataDTO prepare(){
         JSONObject identity_json = new JSONObject();
         for (Map.Entry<String, IDObjectField> entry : store.getCurrentPerson().getIdObject().entrySet()) {
             String key = entry.getKey();

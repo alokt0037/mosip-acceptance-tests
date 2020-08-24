@@ -24,7 +24,8 @@ public class AddDocument extends BaseStep implements StepInterface {
         process(responseData);
     }
 
-    public RequestDataDTO prepare(){
+    @SuppressWarnings("unchecked")
+	public RequestDataDTO prepare(){
         String filePath = "";
         JSONObject request_json = new JSONObject();
         JSONObject requestData = new JSONObject();
@@ -38,6 +39,16 @@ public class AddDocument extends BaseStep implements StepInterface {
                 request_json.put("docTypCode", store.getCurrentPerson().getProofOfAddress().getDocTypeCode().toUpperCase());
                 filePath = store.getCurrentPerson().getProofOfAddress().getPath();
                 break;
+            case "POM":
+            	request_json.put("docCatCode", store.getCurrentPerson().getProofOfAddressInvalidFormt().getDocCatCode().name().toUpperCase());
+            	request_json.put("docTypCode", store.getCurrentPerson().getProofOfAddressInvalidFormt().getDocTypeCode().toUpperCase());
+            	filePath = store.getCurrentPerson().getProofOfAddressInvalidFormt().getPath();
+            	break;
+            case "IPOA":
+            	 request_json.put("docCatCode", store.getCurrentPerson().getProofOfAddressExceedSize().getDocCatCode().name().toUpperCase());
+                 request_json.put("docTypCode", store.getCurrentPerson().getProofOfAddressExceedSize().getDocTypeCode().toUpperCase());
+                 filePath = store.getCurrentPerson().getProofOfAddressExceedSize().getPath();
+            	break;
             case "POR":
                 request_json.put("docCatCode", store.getCurrentPerson().getProofOfRelationship().getDocCatCode().name().toUpperCase());
                 request_json.put("docTypCode", store.getCurrentPerson().getProofOfRelationship().getDocTypeCode().toUpperCase());
@@ -57,8 +68,7 @@ public class AddDocument extends BaseStep implements StepInterface {
                 throw new RuntimeException("Invalid DocCategory :"+step.getParameters().get(0));
         }
 
-        request_json.put("langCode", store.getCurrentPerson().getPrimaryLang());
-
+        request_json.put("langCode", store.getCurrentPerson().getLangCode());
 
         requestData.put("id", "mosip.pre-registration.document.upload");
         requestData.put("version", System.getProperty("ivv.prereg.apiversion"));

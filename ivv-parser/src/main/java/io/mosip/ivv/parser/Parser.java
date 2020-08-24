@@ -32,14 +32,15 @@ public class Parser implements ParserInterface {
         inputDTO = input;
     }
 
-    public ArrayList<Persona> getPersonas() throws RigInternalError {
+    @SuppressWarnings({ "rawtypes", "unchecked" })
+	public ArrayList<Persona> getPersonas() throws RigInternalError {
         validatePersonaFiles();
         JSONParser parser = new JSONParser();
         ArrayList personaData = Utils.csvToList(inputDTO.getPersonaSheet());
         ArrayList documentData = getDocuments();
         ArrayList biometricData = getBiometrics();
         String idObjectSchema = Utils.readFileAsString(inputDTO.getIdObjectSchema());
-        ArrayList<Persona> persona_list = new ArrayList();
+        ArrayList<Persona> persona_list = new ArrayList<>();
 
         /* Prereg skip fields */
         List<String> preregSkipFields = new ArrayList<>();
@@ -78,7 +79,8 @@ public class Parser implements ParserInterface {
             iam.setProofOfRelationship(getProofDocumentByCategory(ProofDocument.DOCUMENT_CATEGORY.POR, documentData));
             iam.setProofOfException(getProofDocumentByCategory(ProofDocument.DOCUMENT_CATEGORY.POEX, documentData));
             iam.setProofOfExemption(getProofDocumentByCategory(ProofDocument.DOCUMENT_CATEGORY.POEM, documentData));
-
+            iam.setProofOfAddressInvalidFormt(getProofDocumentByCategory(ProofDocument.DOCUMENT_CATEGORY.POM, documentData));
+            iam.setProofOfAddressExceedSize(getProofDocumentByCategory(ProofDocument.DOCUMENT_CATEGORY.IPOA, documentData));
             /* Adding biometrics */
             iam.setFace(getBiometricsByCategory(BiometricsDTO.BIOMETRIC_CAPTURE.face, biometricData));
             iam.setLeftEye(getBiometricsByCategory(BiometricsDTO.BIOMETRIC_CAPTURE.leftEye, biometricData));
@@ -248,7 +250,8 @@ public class Parser implements ParserInterface {
         return person_list;
     }
 
-    public ArrayList<Scenario> getScenarios() throws RigInternalError {
+    @SuppressWarnings({ "rawtypes", "unchecked" })
+	public ArrayList<Scenario> getScenarios() throws RigInternalError {
         validateScenarioFiles();
         ArrayList data = Utils.csvToList(inputDTO.getScenarioSheet());
         ArrayList<Scenario> scenario_array = new ArrayList();

@@ -66,7 +66,8 @@ public class ValidateOTP extends BaseStep implements StepInterface {
 
     }
 
-    private String checkForOTP() throws RigInternalError {
+    @SuppressWarnings("serial")
+	private String checkForOTP() throws RigInternalError {
         try {
             logInfo("Retrying after 10 seconds...");
             Thread.sleep(10000);
@@ -77,7 +78,7 @@ public class ValidateOTP extends BaseStep implements StepInterface {
             return "";
         }
 
-        String otp = "";
+        String otp = "111111";
         ArrayList<String> subjects = new ArrayList<String>() {{
             if(properties.getProperty("ivv.prereg.otp.subject") != null && !properties.getProperty("ivv.prereg.otp.subject").isEmpty()){
                 add(properties.getProperty("ivv.prereg.otp.subject"));
@@ -102,14 +103,17 @@ public class ValidateOTP extends BaseStep implements StepInterface {
         process(responseData);
     }
 
-    public RequestDataDTO prepare(){
+    @SuppressWarnings("unchecked")
+	public RequestDataDTO prepare(){
         JSONObject request_json = new JSONObject();
-        request_json.put("otp", otp.trim());
+        //request_json.put("otp", otp.trim());
+        request_json.put("otp", (store.getCurrentPerson().getOtp()==null)?otp.trim():store.getCurrentPerson().getOtp());
         request_json.put("userId", store.getCurrentPerson().getUserid());
         JSONObject requestData = new JSONObject();
         requestData.put("id", "mosip.pre-registration.login.useridotp");
         requestData.put("version", "1.0");
-        requestData.put("requesttime", Utils.getCurrentDateAndTimeForAPI());
+        //requestData.put("requesttime", Utils.getCurrentDateAndTimeForAPI());
+        requestData.put("requesttime", (store.getCurrentPerson().getRequesttime()!=null)?"2020-08-18T19:28:05.099Z":Utils.getCurrentDateAndTimeForAPI());
         requestData.put("request", request_json);
         String url = "/preregistration/" + System.getProperty("ivv.prereg.version") + "/login/validateOtp";
         return new RequestDataDTO(url, requestData.toJSONString());

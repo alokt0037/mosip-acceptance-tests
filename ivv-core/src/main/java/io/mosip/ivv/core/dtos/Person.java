@@ -15,6 +15,9 @@ public class Person extends PersonaDef {
     /* required */
     private HashMap<String, IDObjectField> idObject = new HashMap<String, IDObjectField>();
     private String id;
+    private String reqId;
+    private String version;
+    private String requesttime;
     private String userid;
     private String password;
     //private String email;
@@ -56,8 +59,11 @@ public class Person extends PersonaDef {
     private String referenceIdentityNumber = "";
     private String postalCode = "";
     private String langCode = "fra";
+   // private String langCode = "";
     private String gender = "";
     private String residenceStatus = "";
+    private String phone = "";
+    
 
 
     private ArrayList<String> docTypeList;
@@ -67,6 +73,8 @@ public class Person extends PersonaDef {
     private ProofDocument proofOfRelationship = null;
     private ProofDocument proofOfException = null;
     private ProofDocument proofOfExemption = null;
+    private ProofDocument proofOfAddressInvalidFormt = null;
+    private ProofDocument proofOfAddressExceedSize = null;
 
     private BiometricsDTO face;
     private BiometricsDTO leftEye;

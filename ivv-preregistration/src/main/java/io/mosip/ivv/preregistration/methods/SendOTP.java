@@ -21,14 +21,18 @@ public class SendOTP extends BaseStep implements StepInterface {
         process(responseData);
     }
 
-    public RequestDataDTO prepare(){
+    @SuppressWarnings("unchecked")
+	public RequestDataDTO prepare(){
         JSONObject request_json = new JSONObject();
         request_json.put("userId", store.getCurrentPerson().getUserid());
 
         JSONObject requestData = new JSONObject();
-        requestData.put("id", "mosip.pre-registration.login.sendotp");
-        requestData.put("version", "1.0");
-        requestData.put("requesttime", Utils.getCurrentDateAndTimeForAPI());
+        //requestData.put("id", "mosip.pre-registration.login.sendotp");
+        requestData.put("id", (store.getCurrentPerson().getReqId())==null?"mosip.pre-registration.login.sendotp":store.getCurrentPerson().getReqId());
+        //requestData.put("version", "1.0");
+        requestData.put("version", (store.getCurrentPerson().getVersion())==null?"1.0":store.getCurrentPerson().getVersion());
+        //requestData.put("requesttime", Utils.getCurrentDateAndTimeForAPI());
+        requestData.put("requesttime", (store.getCurrentPerson().getRequesttime())==null?Utils.getCurrentDateAndTimeForAPI():store.getCurrentPerson().getRequesttime());
         requestData.put("request", request_json);
 
         String url = "/preregistration/" + System.getProperty("ivv.prereg.version") + "/login/sendOtp";

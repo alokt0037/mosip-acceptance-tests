@@ -78,8 +78,8 @@ public class AddApplicantDemographics extends BaseStep implements StepInterface 
             cbeffDTO.setValue("introducer_bio_CBEFF");
             individualIdentity.setParentOrGuardianBiometrics(cbeffDTO);
 
-            registrationDTO.getDemographicDTO().setIntroducerRID(store.getCurrentIntroducer().getRegistrationId());
-            registrationDTO.getDemographicDTO().setIntroducerUIN(store.getCurrentIntroducer().getUin());
+           // registrationDTO.getDemographicDTO().setIntroducerRID(store.getCurrentIntroducer().getRegistrationId());
+           // registrationDTO.getDemographicDTO().setIntroducerUIN(store.getCurrentIntroducer().getUin());
         }
 
         CBEFFFilePropertiesDTO cbeffDTO = new CBEFFFilePropertiesDTO();
@@ -88,7 +88,7 @@ public class AddApplicantDemographics extends BaseStep implements StepInterface 
         cbeffDTO.setValue("applicant_bio_CBEFF");
         individualIdentity.setIndividualBiometrics(cbeffDTO);
 
-        registrationDTO.getDemographicDTO().getDemographicInfoDTO().setIdentity(individualIdentity);
+       // registrationDTO.getDemographicDTO().getDemographicInfoDTO().setIdentity(individualIdentity);
         this.store.setRegistrationDto(registrationDTO);
         ObjectMapper mapper = new ObjectMapper();
         try {

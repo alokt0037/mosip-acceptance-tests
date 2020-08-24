@@ -20,7 +20,7 @@
 *PreRegPacketStore
 
 # properties file #
-*/config.properties
+#*/config.properties#    modified here
 *reg
 */db
 *local*
@@ -28,3 +28,38 @@
 *.jar
 *.log
 /.tmp
+
+#modified  below #
+.project
+.settings/
+ivv-core/.classpath
+ivv-core/.project
+ivv-core/.settings/
+ivv-dg/.classpath
+ivv-dg/.project
+ivv-dg/.settings/
+ivv-ida/.classpath
+ivv-ida/.project
+ivv-ida/.settings/
+ivv-kernel/.classpath
+ivv-kernel/.project
+ivv-kernel/.settings/
+ivv-mutators/.classpath
+ivv-mutators/.project
+ivv-mutators/.settings/
+ivv-orchestrator/.classpath
+ivv-orchestrator/.project
+ivv-orchestrator/.settings/
+ivv-orchestrator/testRun/reports/mosip_reports.html
+ivv-parser/.classpath
+ivv-parser/.project
+ivv-parser/.settings/
+ivv-preregistration/.classpath
+ivv-preregistration/.project
+ivv-preregistration/.settings/
+ivv-registration/.classpath
+ivv-registration/.project
+ivv-registration/.settings/
+ivv-regprocessor/.classpath
+ivv-regprocessor/.project
+ivv-regprocessor/.settings/

@@ -45,9 +45,9 @@ public abstract class Setup {
         DemographicDTO demographicDTO = new DemographicDTO();
         ApplicantDocumentDTO appdt = new ApplicantDocumentDTO();
         appdt.setDocuments(new HashMap<String, DocumentDetailsDTO>());
-        demographicDTO.setApplicantDocumentDTO(appdt);
+       // demographicDTO.setApplicantDocumentDTO(appdt);
         demographicDTO.setDemographicInfoDTO(new DemographicInfoDTO());
-        registrationDTO.setDemographicDTO(demographicDTO);
+       // registrationDTO.setDemographicDTO(demographicDTO);
 
         BiometricInfoDTO bidto = new BiometricInfoDTO();
         bidto.setFace(new FaceDetailsDTO());

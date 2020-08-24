@@ -43,8 +43,8 @@ public class CreatePacket extends BaseStep implements StepInterface {
         ObjectMapper mapper = new ObjectMapper();
         try {
             logInfo("OSI data: "+mapper.writeValueAsString(registrationDTO.getOsiDataDTO()));
-            logInfo("Identity data: "+mapper.writeValueAsString(registrationDTO.getDemographicDTO().getDemographicInfoDTO()));
-            logInfo("Documents data: "+registrationDTO.getDemographicDTO().getApplicantDocumentDTO().getDocuments().toString());
+           // logInfo("Identity data: "+mapper.writeValueAsString(registrationDTO.getDemographicDTO().getDemographicInfoDTO()));
+           // logInfo("Documents data: "+registrationDTO.getDemographicDTO().getApplicantDocumentDTO().getDocuments().toString());
             logInfo("Biometrics data: "+registrationDTO.getBiometricDTO().getApplicantBiometricDTO().toString());
             logInfo("Meta data: "+mapper.writeValueAsString(registrationDTO.getRegistrationMetaDataDTO()));
             extentInstance.info("Registration id: "+registrationDTO.getRegistrationId());

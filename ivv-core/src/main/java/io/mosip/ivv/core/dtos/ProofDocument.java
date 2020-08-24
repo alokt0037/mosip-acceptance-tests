@@ -9,7 +9,7 @@ import java.util.ArrayList;
 @Setter
 public class ProofDocument {
 
-    public enum DOCUMENT_CATEGORY {POA, POB, POI, POR, POEX, POEM};
+    public enum DOCUMENT_CATEGORY {POA, POB, POI, POR, POEX, POEM,POM,IPOA};
     private DOCUMENT_CATEGORY docCatCode = DOCUMENT_CATEGORY.POI;
     private String docTypeCode = "";
     private String docFileFormat = "";

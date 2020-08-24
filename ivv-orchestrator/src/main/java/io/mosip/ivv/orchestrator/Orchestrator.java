@@ -31,7 +31,8 @@ public class Orchestrator {
     private ApplicationContext applicationContext;
     private Object localApplicationContext;
     private Properties properties;
-    private HashMap<String, String> packages = new HashMap<String, String>(){{
+    @SuppressWarnings("serial")
+	private HashMap<String, String> packages = new HashMap<String, String>(){{
         put("pr", "io.mosip.ivv.preregistration.methods");
         put("rc", "io.mosip.ivv.registration.methods");
         put("rp", "io.mosip.ivv.regprocessor.methods");
@@ -146,9 +147,9 @@ public class Orchestrator {
         store.setProperties(this.properties);
         for(Scenario.Step step: scenario.getSteps()){
             if(step.getModule().equals(Scenario.Step.modules.rc)){
-                this.regClientSetup();
-                store.setRegApplicationContext(this.applicationContext);
-                store.setRegLocalContext(this.localApplicationContext);
+               // this.regClientSetup();
+                //store.setRegApplicationContext(this.applicationContext);
+               // store.setRegLocalContext(this.localApplicationContext);
             }
             Utils.auditLog.info("" );
             String identifier =

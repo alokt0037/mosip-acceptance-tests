@@ -96,7 +96,7 @@
         <dependency>
             <groupId>io.mosip.registration</groupId>
             <artifactId>registration-services</artifactId>
-            <version>1.0.7</version>
+            <version>1.0.10</version>
 <!--            <systemPath>${project.basedir}/services_jar/registration-services-1.0.6-rc.jar</systemPath>-->
 <!--            <scope>system</scope>-->
         </dependency>
@@ -104,7 +104,7 @@
             <groupId>com.identy.IdentyBioSDK</groupId>
             <artifactId>IdentyBioSDK</artifactId>
             <version>1.0.0</version>
-            <systemPath>${project.basedir}/services_jar/identy-sdk.jar</systemPath>
+            <systemPath>${project.basedir}/services_jar/identy_sdk.jar</systemPath>
             <scope>system</scope>
         </dependency>
     </dependencies>

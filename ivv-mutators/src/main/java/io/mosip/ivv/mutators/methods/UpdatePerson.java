@@ -3,6 +3,7 @@ package io.mosip.ivv.mutators.methods;
 import io.mosip.ivv.core.base.BaseStep;
 import io.mosip.ivv.core.base.StepInterface;
 import io.mosip.ivv.core.dtos.IDObjectField;
+import io.mosip.ivv.core.dtos.ProofDocument.DOCUMENT_CATEGORY;
 import io.mosip.ivv.core.dtos.RequestDataDTO;
 import io.mosip.ivv.core.dtos.ResponseDataDTO;
 import io.mosip.ivv.core.exceptions.RigInternalError;
@@ -39,24 +40,42 @@ public class UpdatePerson extends BaseStep implements StepInterface {
             case "docTypecode":
                 store.getCurrentPerson().getProofOfAddress().setDocTypeCode(value);
                 break;
+            case "docCatCode":
+            	store.getCurrentPerson().getProofOfAddress().setDocCatCode(DOCUMENT_CATEGORY.POM);
+            	break;
             case "langCode":
                 store.getCurrentPerson().setLangCode(value);
                 break;
             case "userid":
                 store.getCurrentPerson().setUserid(value);
                 break;
+            case "reqId":
+            	store.getCurrentPerson().setReqId(value);
+            	break;
+            case "version":
+            	store.getCurrentPerson().setVersion(value);
+            	break;
+            case "requesttime":
+            	store.getCurrentPerson().setRequesttime(value);
+            	break;
+            case "otp":
+            	store.getCurrentPerson().setOtp(value);
+            	break;
             case "date":
                 store.getCurrentPerson().getSlot().setDate(value);
                 break;
-            case "fromDate":
+            case "fromTime":
                 store.getCurrentPerson().getSlot().setFrom(value);
                 break;
-            case "toDate":
+            case "toTime":
                 store.getCurrentPerson().getSlot().setTo(value);
                 break;
             case "registrationId":
                 store.getCurrentPerson().setRegistrationId(value);
                 break;
+            case "registrationCenterId":
+            	store.getCurrentPerson().setRegistrationCenterId(value);
+            	break;
 
             case "uin":
                 store.getCurrentPerson().setUin(value);
@@ -69,6 +88,13 @@ public class UpdatePerson extends BaseStep implements StepInterface {
             case "centerId":
                 store.getCurrentPerson().setRegistrationCenterId(value);
                 break;
+            case "docFileFormat":
+            	store.getCurrentPerson().getProofOfAddress().setDocFileFormat(value);
+            	break;
+		/*
+		 * case "city": store.getCurrentPerson().setCity(value); break; case
+		 * "postalCode": store.getCurrentPerson().setPostalCode(value); break;
+		 */
 
             default:
                 if(key==null || key.isEmpty()){

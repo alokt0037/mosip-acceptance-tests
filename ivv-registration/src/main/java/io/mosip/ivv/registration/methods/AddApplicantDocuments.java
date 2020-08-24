@@ -40,7 +40,7 @@ public class AddApplicantDocuments extends BaseStep implements StepInterface {
             applicantDocumentDTO.getDocuments().put("POI", this.getPOI());
         }
 
-        registrationDTO.getDemographicDTO().setApplicantDocumentDTO(applicantDocumentDTO);
+       // registrationDTO.getDemographicDTO().setApplicantDocumentDTO(applicantDocumentDTO);
         this.store.setRegistrationDto(registrationDTO);
     }
 
