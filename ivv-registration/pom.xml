@@ -100,13 +100,13 @@
 <!--            <systemPath>${project.basedir}/services_jar/registration-services-1.0.6-rc.jar</systemPath>-->
 <!--            <scope>system</scope>-->
         </dependency>
-        <dependency>
+       <!--  <dependency>
             <groupId>com.identy.IdentyBioSDK</groupId>
             <artifactId>IdentyBioSDK</artifactId>
             <version>1.0.0</version>
             <systemPath>${project.basedir}/services_jar/identy_sdk.jar</systemPath>
             <scope>system</scope>
-        </dependency>
+        </dependency> -->
     </dependencies>
 
 

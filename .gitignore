@@ -23,9 +23,9 @@
 #*/config.properties#    modified here
 *reg
 */db
-*local*
-*services_jar/*
-*.jar
+#*local*#  modified here
+#*services_jar/*#    modified here
+#*.jar#    modified here
 *.log
 /.tmp
 
@@ -63,3 +63,4 @@ ivv-registration/.settings/
 ivv-regprocessor/.classpath
 ivv-regprocessor/.project
 ivv-regprocessor/.settings/
+ivv-registration/services_jar/

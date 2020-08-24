@@ -1,0 +1,43 @@
+node {
+
+ def branch = 'master'
+ def projectToBuild = 'mosip-acceptance-tests'
+ stage('------- Checkout --------') {
+  dir(branch) {
+   checkout([$class: 'GitSCM',
+    branches: [
+     [name: branch]
+    ],
+    userRemoteConfigs: [
+     [url: 'https://github.com/alokt0037/mosip-acceptance-tests', credentialsId: 'e80f93ea-49d6-46b6-87df-f7d02dc0e1cf']
+    ],
+   ])
+  }
+ }
+
+stage ('---------- mvn-clean-test ---------------') {
+	  dir(branch)
+  {
+	sh '/usr/local/maven/bin/mvn clean install'
+  }
+  
+  
+  publishHTML(
+   target:[
+   allowMissing: false, 
+   alwaysLinkToLastBuild: false, 
+   keepAll: true, 
+   reportDir: branch+"/"+projectToBuild+"/testng-report", 
+   reportFiles: 'emailable-report', 
+   reportName: 'HTML Report'
+])
+}
+        recipients = "alok.tiwari@technoforte.co.in"
+emailext ( 
+	    attachmentsPattern:'**/testng-report/emailable-report.html',
+	    subject: "MOSIP Jenkins Job $JOB_NAME with build no $BUILD_NUMBER",
+	    body: """<p>Check console output at <a href="$BUILD_URL">'${JOB_NAME}'</a></p>""",
+	    to: "$recipients",
+	    from: '"Jenkins" <info@mosip.io>'
+	)
+}
