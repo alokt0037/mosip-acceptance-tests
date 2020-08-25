@@ -27,7 +27,7 @@ stage ('---------- mvn-clean-test ---------------') {
    allowMissing: false, 
    alwaysLinkToLastBuild: false, 
    keepAll: true, 
-   reportDir: branch+"/"+projectToBuild+"/ivv-orchestrator/testRun/reports" ,
+   reportDir: branch+"/ivv-orchestrator/testRun/reports" ,
    reportFiles: 'mosip_reports', 
    reportName: 'HTML Report'
 ])
